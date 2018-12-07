@@ -1,6 +1,6 @@
 import { SVG_NS } from '../settings';
 
-export default class Paddle {
+export class Paddle {
 
     constructor(boardHeight, width, height, x, y, up, down) {
         this.boardHeight = boardHeight;
@@ -26,6 +26,21 @@ export default class Paddle {
           });
     }
 
+    increaseScore() {
+        this.score += 1;
+    }
+
+    getScore() {
+        return this.score;
+    }
+    
+    coordinates() {
+        const leftX = this.x;
+        const rightX = this.x + this.width;
+        const topY = this.y;
+        const bottomY = this.y + this.height;
+        return [leftX, rightX, topY, bottomY]
+    }
 
     render(svg) {
 		
@@ -35,7 +50,6 @@ export default class Paddle {
         rect.setAttributeNS(null, 'height', this.height);
         rect.setAttributeNS(null, 'x', this.x );
         rect.setAttributeNS(null, 'y', this.y );
-
         svg.appendChild(rect);
 
 	}
