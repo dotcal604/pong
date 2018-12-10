@@ -22,7 +22,7 @@ export default class Game {
 
 		this.scoreFontSize = 38;
 
-		this.ball = new Ball(this.ballRadius, this.width, this.height, KEYS.spaceBar);
+		this.ball = new Ball(this.ballRadius, this.width, this.height);
 
 
 		this.gameElement = document.getElementById(this.element);
