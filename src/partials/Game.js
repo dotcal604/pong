@@ -11,11 +11,15 @@ export default class Game {
 		this.width = width;
 		this.height = height;
 
+		this.gameElement = document.getElementById(this.element);
+
 		this.pause = false;
 		
+		this.board = new Board(this.width, this.height);
+
+		this.boardGap = 10;
 		this.paddleWidth = 8;
 		this.paddleHeight = 56;
-		this.boardGap = 10;
 		this.ballRadius = 8;
 		this.speed = 10;
 		this.ballDirection = 1;
@@ -23,11 +27,6 @@ export default class Game {
 		this.scoreFontSize = 38;
 
 		this.ball = new Ball(this.ballRadius, this.width, this.height);
-
-
-		this.gameElement = document.getElementById(this.element);
-
-		this.board = new Board(this.width, this.height);
 
 		this.paddle1 = new Paddle(
 			this.height,
@@ -49,8 +48,8 @@ export default class Game {
 			KEYS.p2down
 		);
 
-		this.score1 = new Score((this.width / 4), 30, this.scoreFontSize);
-		this.score2 = new Score((3*(this.width / 4)), 30, this.scoreFontSize);
+		this.score1 = new Score((this.width / 4), 30, 10);
+		this.score2 = new Score((3*(this.width / 4)), 30, 10);
 		document.addEventListener('keydown', event => {
 			switch(event.key) {
 				case KEYS.spaceBar:
@@ -82,7 +81,7 @@ export default class Game {
 
 		this.ball.render(svg, this.paddle1, this.paddle2);
 
-		this.score1.render(svg, this.paddle1.getScore());
-		this.score2.render(svg, this.paddle2.getScore());
+		this.score1.render(svg, this.paddle1.score);
+		this.score2.render(svg, this.paddle2.score);
 	}
 }

@@ -25,16 +25,8 @@ export class Paddle {
             }
           });
     }
-
-    increaseScore() {
-        this.score += 1;
-    }
-
-    getScore() {
-        return this.score;
-    }
     
-    coordinates() {
+    coordinates(x, y, width, height) {
         const leftX = this.x;
         const rightX = this.x + this.width;
         const topY = this.y;

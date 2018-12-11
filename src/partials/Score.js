@@ -10,6 +10,7 @@ export class Score {
 
     render(svg, score) {
         let text = document.createElementNS(SVG_NS, 'text');
+        
         text.setAttribute(null, 'x', this.x);
         text.setAttribute(null, 'y', this.y);
         text.setAttribute(null, 'fill', 'white');
