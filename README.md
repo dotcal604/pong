@@ -25,3 +25,12 @@ A basic pong game using SVGs.
 **Player 2:**
 * ▲ : up
 * ▼: down
+
+## Technologies and Tools Used
+
+* HTML
+* SVGs
+* webpack
+* Git
+* VS Code
+* Chrome Dev Tools

@@ -26,7 +26,8 @@ export default class Game {
 
 		this.scoreFontSize = 38;
 
-		this.ball = new Ball(this.ballRadius, this.width, this.height);
+		this.ball1 = new Ball(this.ballRadius, this.width, this.height);
+		this.ball2 = new Ball(this.ballRadius, this.width, this.height);
 
 		this.paddle1 = new Paddle(
 			this.height,
@@ -50,7 +51,7 @@ export default class Game {
 
 		this.score1 = new Score((this.width / 4), 30, 10);
 		this.score2 = new Score((3*(this.width / 4)), 30, 10);
-		
+
 		document.addEventListener('keydown', event => {
 			switch(event.key) {
 				case KEYS.spaceBar:
@@ -80,7 +81,8 @@ export default class Game {
 		this.paddle1.render(svg);
 		this.paddle2.render(svg);
 
-		this.ball.render(svg, this.paddle1, this.paddle2);
+		this.ball1.render(svg, this.paddle1, this.paddle2);
+		this.ball2.render(svg, this.paddle1, this.paddle2);
 
 		this.score1.render(svg, this.paddle1.score);
 		this.score2.render(svg, this.paddle2.score);

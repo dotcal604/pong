@@ -71,7 +71,6 @@ export class Ball {
   }
 
 
-
   render(svg, paddle1, paddle2) {
     
     this.x = this.x + this.vx;
