@@ -5,8 +5,10 @@ export class Ball {
     this.ballRadius = ballRadius;
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
-    this.direction = 1;
+    this.ballDirection = 1;
     this.ping = new Audio('public/sounds/pong-01.wav');
+    this.pong = new Audio('public/sounds/pong-03.wav');
+    this.wall = new Audio('public/sounds/pong-02.wav');
 
     this.reset();
   }
@@ -18,7 +20,7 @@ export class Ball {
     while (this.vy === 0) {
       this.vy = Math.floor(Math.random() * 10 - 5);
     }
-    this.vx = this.direction * (6 - Math.abs(this.vy));
+    this.vx = this.ballDirection * (6 - Math.abs(this.vy));
   }
 
   wallCollision(paddle1, paddle2) {
@@ -29,14 +31,17 @@ export class Ball {
 
     if (hitLeft) {
 
-      this.direction = - 1;
+      this.ballDirection = - 1;
       this.goal(paddle2);
+      this.wall.play()
     } else if (hitRight) {
 
-      this.direction = 1;
+      this.ballDirection = 1;
       this.goal(paddle1);
+      this.wall.play()
     } else if (hitTop || hitBottom) {
       this.vy *= -1;
+      this.pong.play();
     }
   }
 
@@ -47,6 +52,7 @@ export class Ball {
         this.x + this.ballRadius >= left && this.y <= bottom && this.y >= top;
       if (hit) {
         this.vx *= -1;
+        this.ping.play()
       }
     } else {
       const [left, right, top, bottom] = paddle1.coordinates();
@@ -54,6 +60,7 @@ export class Ball {
         this.x - this.ballRadius <= right && this.y <= bottom && this.y >= top;
       if (hit) {
         this.vx *= -1;
+        this.ping.play()
       }
     }
   }
